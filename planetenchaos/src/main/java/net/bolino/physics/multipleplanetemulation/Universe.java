@@ -90,7 +90,7 @@ public class Universe extends JPanel implements Runnable {
 				planet.calcForce(planets);
 			}
 			for (Planet planet : planets) {
-				planet.calcNewPosition();
+				planet.calcNewPosition(timeScale);
 			}
 			this.updateUI();
 

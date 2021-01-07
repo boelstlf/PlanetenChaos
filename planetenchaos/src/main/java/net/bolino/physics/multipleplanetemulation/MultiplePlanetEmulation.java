@@ -81,22 +81,22 @@ public class MultiplePlanetEmulation extends JFrame implements ActionListener {
 		emu.setVisible(true);
 
 		// Sun
-		Planet p1 = new Planet(emu.getUniverse(), "sun", 0, 0, 0, 1.989e30, 25);
+		Planet p1 = new Planet("sun", 0, 0, 0, 1.989e30, 25);
 		p1.setColor(Color.YELLOW);
 		// Venus
-		Planet p2 = new Planet(emu.getUniverse(), "venus", 1.08e11, 0, -1e9, 6.39e23, 10);
+		Planet p2 = new Planet("venus", 1.08e11, 0, -1e9, 6.39e23, 10);
 		p2.setColor(Color.MAGENTA);
 		p2.setVy(-35020);
 		// Earth
-		Planet p3 = new Planet(emu.getUniverse(), "earth", 1.496e11, 0, 1e9, 5.972e24, 10);
+		Planet p3 = new Planet("earth", 1.496e11, 0, 1e9, 5.972e24, 10);
 		p3.setColor(Color.BLUE);
 		p3.setVy(-29780);
 		// Mars
-		Planet p4 = new Planet(emu.getUniverse(), "mars", 2.279e11, 0, -1e9, 6.39e23, 10);
+		Planet p4 = new Planet("mars", 2.279e11, 0, -1e9, 6.39e23, 10);
 		p4.setColor(Color.RED);
 		p4.setVy(-24130);
 		// Jupiter
-		Planet p5 = new Planet(emu.getUniverse(), "jupiter", 7.78e11, 0, 1e9, 1.898e27, 10);
+		Planet p5 = new Planet("jupiter", 7.78e11, 0, 1e9, 1.898e27, 10);
 		p5.setColor(Color.CYAN);
 		p5.setVy(-13070);
 
@@ -165,7 +165,7 @@ public class MultiplePlanetEmulation extends JFrame implements ActionListener {
 
 	private void addPlanet() {
 		Random rand = new Random(System.currentTimeMillis());
-		Planet planet = new Planet(universe, "", 0, 0, 0, 0, 10);
+		Planet planet = new Planet("", 0, 0, 0, 0, 10);
 		planet.setPx(3 * rand.nextGaussian() * 1e10);
 		planet.setPy(3 * rand.nextGaussian() * 1e10);
 		planet.setPz(0);

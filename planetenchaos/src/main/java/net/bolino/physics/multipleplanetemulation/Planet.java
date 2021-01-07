@@ -11,7 +11,6 @@ import java.util.Vector;
  *
  */
 public class Planet implements Cloneable{
-	private Universe universe;
 	private String name;
 	private double px;
 	private double py;
@@ -24,11 +23,31 @@ public class Planet implements Cloneable{
 	private double vy;
 	private double vz;
 	private double fx;
+	/**
+	 * @return the fx
+	 */
+	public double getFx() {
+		return fx;
+	}
+
+	/**
+	 * @return the fy
+	 */
+	public double getFy() {
+		return fy;
+	}
+
+	/**
+	 * @return the fz
+	 */
+	public double getFz() {
+		return fz;
+	}
+
 	private double fy;
 	private double fz;
 
-	public Planet(Universe universe, String name, double px, double py, double pz, double mass, int size) {
-		this.universe = universe;
+	public Planet(String name, double px, double py, double pz, double mass, int size) {
 		this.name = name;
 		this.px = px;
 		this.py = py;
@@ -48,30 +67,30 @@ public class Planet implements Cloneable{
 				double dz = planet.getPz() - this.pz;
 				double distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
 
-				//System.out.println("'" + name + "' \td=" + distance + "\tdx=" + dx + "\tdy=" + dy + "\tdz=" + dz);
+				System.out.println("'" + name + "' \td=" + distance + "\tdx=" + dx + "\tdy=" + dy + "\tdz=" + dz);
 
 				double F = Universe.GRAVITATION_CONST * (this.mass * planet.getMass()) / (distance * distance);
 
 				fx = fx + F * dx / distance;
 				fy = fy + F * dy / distance;
 				fz = fz + F * dz / distance;
-				//System.out.println("'" + name + "' \tF=" + F + "\tfx=" + fx + "\tfy=" + fy + "\tdz=" + dz);
+				System.out.println("'" + name + "' \tF=" + F + "\tfx=" + fx + "\tfy=" + fy + "\tdz=" + dz);
 			}
 		}
 	}
 
-	public void calcNewPosition() {
+	public void calcNewPosition(double timeScale) {
 		double ax = fx / mass;
 		double ay = fy / mass;
 		double az = fz / mass;
 
-		vx = vx + ax * universe.getTimeScale();
-		vy = vy + ay * universe.getTimeScale();
-		vz = vz + az * universe.getTimeScale();
+		vx = vx + ax * timeScale;
+		vy = vy + ay * timeScale;
+		vz = vz + az * timeScale;
 
-		px = px + vx * universe.getTimeScale();
-		py = py + vy * universe.getTimeScale();
-		pz = pz + vz * universe.getTimeScale();
+		px = px + vx * timeScale;
+		py = py + vy * timeScale;
+		pz = pz + vz * timeScale;
 		System.out.format("%s     \tvx=%e \tvy=%e \tvz=%e \tpx=%e \tpy=%e \tpz=%e%n", name, vx, vy, vz, px, py, pz);
 	}
 
