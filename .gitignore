@@ -1,7 +1,10 @@
-# Eclipse
+# Eclipse files
+.settings
 .classpath
 .project
-.settings/
+.externalToolBuilders
+.metadata
+maven-eclipse.xml
 
 # Compiled class file
 *.class
@@ -26,3 +29,13 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/bin/
+
+# Vim files
+*.swp
+
+# Mac files
+.DS_Store
+
+# Windows files
+Thumbs.db
